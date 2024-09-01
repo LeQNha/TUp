@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/homeNav"
+        android:title="Home"
+        android:icon="@drawable/baseline_home_32"/>
+
+    <item android:id="@+id/chatNav"
+        android:title="Chat"
+        android:icon="@drawable/baseline_chat_32"/>
+
+    <item android:id="@+id/historyNav"
+        android:title="Hisrory"
+        android:icon="@drawable/baseline_playlist_add_check_32"/>
+
+    <item android:id="@+id/settingNav"
+        android:title="Setting"
+        android:icon="@drawable/baseline_settings_32"/>
+
+</menu>
