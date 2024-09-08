@@ -13,6 +13,18 @@
         android:theme="@style/Theme.TUp"
         tools:targetApi="31">
         <activity
+            android:name=".ui.acitvities.task.TaskList"
+            android:exported="false" />
+        <activity
+            android:name=".ui.acitvities.task.TaskScreen"
+            android:exported="false" />
+        <activity
+            android:name=".ui.acitvities.team.TeamScreen"
+            android:exported="false" />
+        <activity
+            android:name=".ui.acitvities.team.TeamList"
+            android:exported="false" />
+        <activity
             android:name=".ui.acitvities.MainActivity"
             android:exported="false" />
         <activity
