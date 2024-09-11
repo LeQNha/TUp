@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import nha.tu.tup.databinding.FragmentHomeBinding
+import nha.tu.tup.ui.acitvities.task.TaskList
 import nha.tu.tup.ui.acitvities.team.TeamList
 
 class HomeFragment : Fragment() {
@@ -41,6 +42,10 @@ class HomeFragment : Fragment() {
     private fun onClickListenerSetUp(){
         binding.toTeamListBtn.setOnClickListener {
             val intent = Intent(requireContext(), TeamList::class.java)
+            startActivity(intent)
+        }
+        binding.toTaskListBtn.setOnClickListener{
+            val intent = Intent(requireContext(), TaskList::class.java)
             startActivity(intent)
         }
     }

@@ -1,11 +1,13 @@
 package nha.tu.tup.ui.acitvities.team
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import nha.tu.tup.R
 import nha.tu.tup.databinding.ActivityTeamScreenBinding
 import nha.tu.tup.models.Task
+import nha.tu.tup.ui.acitvities.task.CreateNewTask
 import nha.tu.tup.ui.adapters.TeamMembersAdapter
 import nha.tu.tup.ui.adapters.TeamTasksAdapter
 
@@ -21,6 +23,14 @@ class TeamScreen : AppCompatActivity() {
 
         teamMembersRvSetUp()
         teamTasksRvSetUp()
+        onClickListenerSetUp()
+    }
+
+    private fun onClickListenerSetUp(){
+        binding.addNewTaskBtn.setOnClickListener {
+            val intent = Intent(this, CreateNewTask::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun teamMembersRvSetUp() {

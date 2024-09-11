@@ -59,15 +59,14 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="180dp"
+                android:layout_height="155dp"
                 android:background="@drawable/background3"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:padding="12dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-
 
                     <!-- Button "More details" -->
                     <Button
@@ -101,10 +100,10 @@
                     android:id="@+id/team_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="5dp"
                     android:text="ElHxan"
                     android:textColor="#155385"
-                    android:textSize="32sp"
+                    android:textSize="24sp"
                     android:textStyle="bold" />
 
                 <!-- Text "Tasks complete" -->
@@ -115,7 +114,7 @@
                     android:layout_marginBottom="16dp"
                     android:text="07/09/2024"
                     android:textColor="#06384E"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
                 <!-- ProgressBar -->
                 <ProgressBar
@@ -123,7 +122,7 @@
                     style="@android:style/Widget.ProgressBar.Horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
+                    android:layout_marginBottom="5dp"
                     android:progress="76"
                     android:progressBackgroundTint="@color/white"
                     android:progressTint="#D3DA8C" />
@@ -146,13 +145,14 @@
                 android:id="@+id/constraintLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
                     android:id="@+id/imageView"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="23dp"
+                    android:layout_height="23dp"
                     android:src="@drawable/ic_member"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -164,7 +164,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="4dp"
                     android:text="Members"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imageView"
@@ -175,12 +175,13 @@
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
                     android:gravity="center"
-                    android:text="See All >"
+                    android:text="See All "
                     android:textAllCaps="false"
                     android:textColor="#349DF1"
                     app:layout_constraintBottom_toBottomOf="@+id/textView2"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/textView2" />
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -188,31 +189,22 @@
                 android:id="@+id/teamMembersRecyclerView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-
+                android:layout_marginRight="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imageButton2"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
-            <TextView
-                android:id="@+id/txtOthersNumber"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="+2"
-                android:textSize="30sp"
-                app:layout_constraintBottom_toBottomOf="@+id/teamMembersRecyclerView"
-
-                app:layout_constraintStart_toEndOf="@+id/teamMembersRecyclerView"
-                app:layout_constraintTop_toTopOf="@+id/teamMembersRecyclerView" />
-
             <ImageButton
+                android:id="@+id/imageButton2"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:background="@android:color/transparent"
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_plus"
-                app:layout_constraintBottom_toBottomOf="@+id/txtOthersNumber"
-                app:layout_constraintStart_toEndOf="@+id/txtOthersNumber"
-                app:layout_constraintTop_toTopOf="@+id/txtOthersNumber" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -232,8 +224,8 @@
 
                 <ImageView
                     android:id="@+id/imageView3"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="23dp"
+                    android:layout_height="23dp"
                     android:src="@drawable/ic_task"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -245,18 +237,34 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="4dp"
                     android:text="Tasks"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imageView3"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <ImageButton
+                    android:id="@+id/addNewTaskBtn"
+                    android:layout_width="21dp"
+                    android:layout_height="21dp"
+                    android:layout_marginRight="12dp"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_add"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView3"
+                    app:layout_constraintEnd_toStartOf="@+id/imageButton"
+                    app:layout_constraintTop_toTopOf="@+id/textView3" />
+
+                <ImageButton
+                    android:id="@+id/imageButton"
+                    android:layout_width="21dp"
+                    android:layout_height="21dp"
+                    android:layout_marginRight="18dp"
                     android:background="@android:color/transparent"
                     android:gravity="center"
-                    android:text="See All >"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_filter"
+                    android:text="See All"
                     android:textAllCaps="false"
                     android:textColor="#349DF1"
                     app:layout_constraintBottom_toBottomOf="@+id/textView3"

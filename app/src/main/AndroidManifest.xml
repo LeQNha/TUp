@@ -13,6 +13,21 @@
         android:theme="@style/Theme.TUp"
         tools:targetApi="31">
         <activity
+            android:name=".ui.acitvities.OtherUserScreen"
+            android:exported="false" />
+        <activity
+            android:name=".ui.acitvities.team.CreateNewTeam"
+            android:exported="false" />
+        <activity
+            android:name=".ui.acitvities.task.CreateNewTask"
+            android:exported="false" />
+        <activity
+            android:name=".ui.acitvities.task.CreateUpdateTask"
+            android:exported="false" />
+        <activity
+            android:name=".ui.acitvities.team.CreateUpdateTeam"
+            android:exported="false" />
+        <activity
             android:name=".ui.acitvities.task.TaskList"
             android:exported="false" />
         <activity

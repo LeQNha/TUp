@@ -27,7 +27,7 @@ class TeamList : AppCompatActivity() {
             Team("Huuudddd", "31/12/2024")
         )
         teamAdapter = TeamAdapter(projectList)
-        binding.projectRv.apply {
+        binding.teamListRv.apply {
             layoutManager = LinearLayoutManager(this.context)
             adapter = teamAdapter
         }
