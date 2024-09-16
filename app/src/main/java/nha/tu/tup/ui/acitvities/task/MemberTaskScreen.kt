@@ -4,19 +4,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import nha.tu.tup.R
-import nha.tu.tup.databinding.ActivityCreateNewTaskBinding
-import nha.tu.tup.ui.adapters.AssignedMembersAdapter
+import nha.tu.tup.databinding.ActivityMemberTaskScreenBinding
 import nha.tu.tup.ui.adapters.TeamMembersAdapter
-import nha.tu.tup.ui.fragments.dialogFragments.AssignMemberDialogFragment
 import nha.tu.tup.ui.fragments.dialogFragments.SeeAllAssignedMembersDialogFragment
 
-class CreateNewTask : AppCompatActivity() {
+class MemberTaskScreen : AppCompatActivity() {
 
-    private lateinit var binding : ActivityCreateNewTaskBinding
+    private lateinit var binding: ActivityMemberTaskScreenBinding
     private lateinit var teamMembersAdapter: TeamMembersAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityCreateNewTaskBinding.inflate(layoutInflater)
+        binding = ActivityMemberTaskScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         assignedMemberRvSetUp()
@@ -26,9 +24,6 @@ class CreateNewTask : AppCompatActivity() {
     private fun onClickListenerSetUp(){
         binding.seeAllAssignedMembersBtn.setOnClickListener {
             openSeeAllAssignedMemberDialogFragment()
-        }
-        binding.openAssignMemberDialogFragmentBtn.setOnClickListener {
-            openAssignMemberDialogFragment()
         }
     }
 
@@ -54,9 +49,5 @@ class CreateNewTask : AppCompatActivity() {
     private fun openSeeAllAssignedMemberDialogFragment(){
         val dialog = SeeAllAssignedMembersDialogFragment()
         dialog.show(supportFragmentManager, "SeeAllAssignedMembersDialogFragment")
-    }
-    private fun openAssignMemberDialogFragment(){
-        val dialog = AssignMemberDialogFragment()
-        dialog.show(supportFragmentManager, "AssignMemberDialogFragment")
     }
 }

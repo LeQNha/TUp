@@ -1,5 +1,6 @@
 package nha.tu.tup.ui.acitvities.task
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -35,6 +36,11 @@ class TaskList : AppCompatActivity() {
         binding.taskListRv.apply {
             layoutManager = taskListLayoutManager
             adapter = teamTasksAdapter
+        }
+
+        teamTasksAdapter.setOnItemClickListener {
+            val intent = Intent(this, LeaderTaskScreen::class.java)
+            startActivity(intent)
         }
     }
 }

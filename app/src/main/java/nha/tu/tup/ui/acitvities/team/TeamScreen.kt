@@ -8,8 +8,11 @@ import nha.tu.tup.R
 import nha.tu.tup.databinding.ActivityTeamScreenBinding
 import nha.tu.tup.models.Task
 import nha.tu.tup.ui.acitvities.task.CreateNewTask
+import nha.tu.tup.ui.acitvities.task.LeaderTaskScreen
 import nha.tu.tup.ui.adapters.TeamMembersAdapter
 import nha.tu.tup.ui.adapters.TeamTasksAdapter
+import nha.tu.tup.ui.fragments.dialogFragments.AddNewMemberDialogFragment
+import nha.tu.tup.ui.fragments.dialogFragments.SeeAllMembersDialogFragment
 
 class TeamScreen : AppCompatActivity() {
 
@@ -30,6 +33,12 @@ class TeamScreen : AppCompatActivity() {
         binding.addNewTaskBtn.setOnClickListener {
             val intent = Intent(this, CreateNewTask::class.java)
             startActivity(intent)
+        }
+        binding.seeAllMemberBtn.setOnClickListener{
+            openSeeALLMembersDialogFragment()
+        }
+        binding.addNewMemberBtn.setOnClickListener {
+            openAddNewMembersDialogFragment()
         }
     }
 
@@ -63,5 +72,20 @@ class TeamScreen : AppCompatActivity() {
             layoutManager = teamTasksLayoutManager
             adapter = teamTasksAdapter
         }
+        teamTasksAdapter.setOnItemClickListener {
+            val intent = Intent(this, LeaderTaskScreen::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun openSeeALLMembersDialogFragment(){
+        val dialog = SeeAllMembersDialogFragment()
+//        val dialog = AddNewMemberDialogFragment()
+        dialog.show(supportFragmentManager, "SeeAllMemberDialogFragmentDialogFragment")
+    }
+
+    private fun openAddNewMembersDialogFragment(){
+        val dialog = AddNewMemberDialogFragment()
+        dialog.show(supportFragmentManager, "AddNewMemberDialogFragmentDialogFragment")
     }
 }

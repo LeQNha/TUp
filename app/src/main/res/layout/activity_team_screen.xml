@@ -170,7 +170,8 @@
                     app:layout_constraintStart_toEndOf="@+id/imageView"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <Button
+                <TextView
+                    android:id="@+id/see_all_member_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
@@ -196,7 +197,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
             <ImageButton
-                android:id="@+id/imageButton2"
+                android:id="@+id/add_new_member_btn"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:background="@android:color/transparent"
@@ -210,6 +211,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             app:layout_constraintEnd_toEndOf="@+id/constraintLayout2"
             app:layout_constraintStart_toStartOf="@+id/constraintLayout2"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
@@ -259,7 +261,6 @@
                     android:id="@+id/imageButton"
                     android:layout_width="21dp"
                     android:layout_height="21dp"
-                    android:layout_marginRight="18dp"
                     android:background="@android:color/transparent"
                     android:gravity="center"
                     android:scaleType="fitCenter"
@@ -284,5 +285,15 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#B3E677"
+        android:src="@drawable/ic_chat"
+        android:tint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="15dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

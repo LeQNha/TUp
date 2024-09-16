@@ -36,6 +36,7 @@ class TeamMembersAdapter(private val avatars: List<Int>, private val context: Co
 
     // Trả về số lượng mục (bao gồm thêm mục cho nút "Thêm thành viên")
     override fun getItemCount(): Int {
-        return if (avatars.size >= 3) 4 else avatars.size + 1
+//        return if (avatars.size >= 3) 4 else avatars.size + 1
+        return avatars.size
     }
 }

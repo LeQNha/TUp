@@ -12,12 +12,12 @@
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/chatFragment2"
-        android:name="nha.tu.tup.ui.fragments.ChatFragment"
+        android:name="nha.tu.tup.ui.fragments.PeopleFragment"
         android:label="fragment_chat"
         tools:layout="@layout/fragment_chat" />
     <fragment
         android:id="@+id/historyFragment2"
-        android:name="nha.tu.tup.ui.fragments.HistoryFragment"
+        android:name="nha.tu.tup.ui.fragments.ProfileFragment"
         android:label="fragment_history"
         tools:layout="@layout/fragment_history" />
     <fragment

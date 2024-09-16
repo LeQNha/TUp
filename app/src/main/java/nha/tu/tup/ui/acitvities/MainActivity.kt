@@ -3,16 +3,10 @@ package nha.tu.tup.ui.acitvities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavController
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import nha.tu.tup.R
 import nha.tu.tup.databinding.ActivityMainBinding
-import nha.tu.tup.ui.fragments.ChatFragment
-import nha.tu.tup.ui.fragments.HistoryFragment
+import nha.tu.tup.ui.fragments.PeopleFragment
+import nha.tu.tup.ui.fragments.ProfileFragment
 import nha.tu.tup.ui.fragments.HomeFragment
 import nha.tu.tup.ui.fragments.SettingFragment
 
@@ -45,11 +39,11 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.chat_nav -> {
-                    replaceFragment(ChatFragment())
+                    replaceFragment(PeopleFragment())
                     true
                 }
                 R.id.history_nav -> {
-                    replaceFragment(HistoryFragment())
+                    replaceFragment(ProfileFragment())
                     true
                 }
                 R.id.setting_nav -> {

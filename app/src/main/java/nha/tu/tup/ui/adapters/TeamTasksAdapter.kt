@@ -28,10 +28,22 @@ class TeamTasksAdapter(val teamTaskList: List<Task>): RecyclerView.Adapter<TeamT
             taskTitle.text = currentTask.taskTitle
             taskDue.text = currentTask.taskDue
             taskMemberNumber.text = currentTask.memberNumber.toString() + " Members"
+
+            itemView.setOnClickListener {
+                onItemClickListener?.let {
+                    it(currentTask)
+                }
+            }
         }
     }
 
     override fun getItemCount(): Int {
         return teamTaskList.size
+    }
+
+    private var onItemClickListener: ((Task) -> Unit)? = null
+
+    fun setOnItemClickListener(listener: (Task) -> Unit){
+        onItemClickListener = listener
     }
 }

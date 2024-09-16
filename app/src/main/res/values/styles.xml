@@ -11,4 +11,13 @@
         <item name="android:background">@drawable/tabbar_btn_normal</item>
     </style>
 
+<!--    Progress button-->
+    <style name="progress_btn_check">
+        <item name="android:background">@drawable/progress_btn_background</item>
+        <item name="android:elevation">2dp</item>
+    </style>
+    <style name="progress_btn_notcheck">
+        <item name="android:background">@null</item>
+    </style>
+
 </resources>

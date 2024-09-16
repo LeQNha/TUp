@@ -4,8 +4,8 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/member_rv_item_background1"
-    android:layout_margin="5dp">
+    android:background="@drawable/member_rv_item_background2"
+    android:layout_margin="8dp">
 
     <ImageView
         android:id="@+id/imgAvatar"
