@@ -11,13 +11,52 @@
         <item name="android:background">@drawable/tabbar_btn_normal</item>
     </style>
 
-<!--    Progress button-->
+    <!--    Progress button-->
     <style name="progress_btn_check">
         <item name="android:background">@drawable/progress_btn_background</item>
         <item name="android:elevation">2dp</item>
     </style>
+
     <style name="progress_btn_notcheck">
         <item name="android:background">@null</item>
     </style>
 
+    <!--    Add Button-->
+    <style name="add_assign_btn">
+        <item name="android:background">@drawable/add_assign_btn_background</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="unadd_unassign_btn">
+        <item name="android:background">@drawable/unadd_unassign_btn_background</item>
+        <item name="android:textColor">#D5B146</item>
+    </style>
+
+    <style name="add_btn" parent="add_assign_btn">
+        <item name="android:text">Add</item>
+    </style>
+
+    <style name="unadd_btn" parent="unadd_unassign_btn">
+        <item name="android:text">Undo</item>
+    </style>
+
+    <style name="assign_btn" parent="add_assign_btn">
+        <item name="android:text">Assign</item>
+    </style>
+
+    <style name="unassign_btn" parent="unadd_unassign_btn">
+        <item name="android:text">Unassign</item>
+    </style>
+
+    <!-- Add Friend Button -->
+    <style name="add_friend_btn">
+        <item name="android:background">@drawable/add_friend_btn_background</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:text">Add</item>
+    </style>
+    <style name="waitting_friend_request_accepted_btn">
+        <item name="android:background">@drawable/waitting_friend_request_accepted_btn_background</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:text">Requested...</item>
+    </style>
 </resources>

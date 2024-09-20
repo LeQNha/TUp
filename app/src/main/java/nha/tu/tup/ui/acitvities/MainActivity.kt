@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import nha.tu.tup.R
 import nha.tu.tup.databinding.ActivityMainBinding
-import nha.tu.tup.ui.fragments.PeopleFragment
+import nha.tu.tup.ui.fragments.FriendFragment
 import nha.tu.tup.ui.fragments.ProfileFragment
 import nha.tu.tup.ui.fragments.HomeFragment
 import nha.tu.tup.ui.fragments.SettingFragment
@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.chat_nav -> {
-                    replaceFragment(PeopleFragment())
+                    replaceFragment(FriendFragment())
                     true
                 }
                 R.id.history_nav -> {

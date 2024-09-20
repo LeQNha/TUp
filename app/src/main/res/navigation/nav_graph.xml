@@ -12,9 +12,9 @@
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/chatFragment2"
-        android:name="nha.tu.tup.ui.fragments.PeopleFragment"
+        android:name="nha.tu.tup.ui.fragments.FriendFragment"
         android:label="fragment_chat"
-        tools:layout="@layout/fragment_chat" />
+        tools:layout="@layout/fragment_friend" />
     <fragment
         android:id="@+id/historyFragment2"
         android:name="nha.tu.tup.ui.fragments.ProfileFragment"

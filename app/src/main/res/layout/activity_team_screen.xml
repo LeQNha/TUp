@@ -10,7 +10,7 @@
         android:id="@+id/linearLayout5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/head_section_background"
+
         android:orientation="horizontal"
         android:paddingLeft="30dp"
         android:paddingTop="15dp"
@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageButton
+        <ImageView
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:layout_gravity="center_vertical"
@@ -33,7 +33,6 @@
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="30dp"
             android:text="Team Detail"
-            android:textColor="@color/white"
             android:textSize="26sp"
             android:textStyle="bold" />
 
@@ -74,7 +73,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
-                        android:backgroundTint="#B0F186"
+                        android:backgroundTint="#3F51B5"
                         android:text="More Details"
                         android:textAllCaps="false"
                         android:textColor="#FBFBFB"
@@ -249,28 +248,26 @@
                     android:id="@+id/addNewTaskBtn"
                     android:layout_width="21dp"
                     android:layout_height="21dp"
-                    android:layout_marginRight="12dp"
                     android:background="@android:color/transparent"
                     android:scaleType="fitCenter"
                     android:src="@drawable/ic_add"
+                    android:layout_marginLeft="15dp"
                     app:layout_constraintBottom_toBottomOf="@+id/textView3"
-                    app:layout_constraintEnd_toStartOf="@+id/imageButton"
+                    app:layout_constraintStart_toEndOf="@+id/textView3"
                     app:layout_constraintTop_toTopOf="@+id/textView3" />
 
-                <ImageButton
-                    android:id="@+id/imageButton"
-                    android:layout_width="21dp"
-                    android:layout_height="21dp"
+                <TextView
+                    android:id="@+id/see_all_tasks_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
                     android:gravity="center"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/ic_filter"
-                    android:text="See All"
+                    android:text="See All "
                     android:textAllCaps="false"
                     android:textColor="#349DF1"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView3"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/textView3" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
