@@ -16,7 +16,7 @@
             android:name=".ui.acitvities.task.MemberTaskScreen"
             android:exported="false" />
         <activity
-            android:name=".ui.acitvities.OtherUserScreen"
+            android:name=".ui.acitvities.OtherUserProfileScreen"
             android:exported="false" />
         <activity
             android:name=".ui.acitvities.team.CreateNewTeam"

@@ -6,7 +6,7 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import nha.tu.tup.databinding.ActivityTeamListBinding
 import nha.tu.tup.models.Team
-import nha.tu.tup.ui.adapters.TeamAdapter
+import nha.tu.tup.adapters.TeamAdapter
 
 class TeamList : AppCompatActivity() {
 

@@ -1,4 +1,4 @@
-package nha.tu.tup.ui.adapters
+package nha.tu.tup.adapters
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter

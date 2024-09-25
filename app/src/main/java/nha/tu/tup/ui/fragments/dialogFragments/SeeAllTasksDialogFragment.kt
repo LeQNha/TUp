@@ -13,7 +13,7 @@ import nha.tu.tup.databinding.FragmentSeeAllTasksDialogBinding
 import nha.tu.tup.models.Task
 import nha.tu.tup.ui.acitvities.task.CreateNewTask
 import nha.tu.tup.ui.acitvities.task.LeaderTaskScreen
-import nha.tu.tup.ui.adapters.TeamTasksAdapter
+import nha.tu.tup.adapters.TeamTasksAdapter
 
 class SeeAllTasksDialogFragment : DialogFragment() {
 

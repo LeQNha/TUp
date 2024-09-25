@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import nha.tu.tup.R
 import nha.tu.tup.databinding.FragmentFriendRequestsBinding
-import nha.tu.tup.ui.adapters.FriendRequestAdapter
+import nha.tu.tup.adapters.FriendRequestAdapter
 
 class FriendRequestsFragment : Fragment() {
 

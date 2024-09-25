@@ -1,4 +1,4 @@
-package nha.tu.tup.ui.adapters
+package nha.tu.tup.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -18,11 +18,11 @@ class TeamTasksAdapter(val teamTaskList: List<Task>): RecyclerView.Adapter<TeamT
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): TeamTasksAdapter.TaskViewHolder {
+    ): TaskViewHolder {
         return TaskViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.team_tasks_rv_item_layout,parent,false))
     }
 
-    override fun onBindViewHolder(holder: TeamTasksAdapter.TaskViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
         val currentTask = teamTaskList[position]
         holder.apply {
             taskTitle.text = currentTask.taskTitle

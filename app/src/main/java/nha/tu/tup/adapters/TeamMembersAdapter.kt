@@ -1,4 +1,4 @@
-package nha.tu.tup.ui.adapters
+package nha.tu.tup.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -25,13 +25,10 @@ class TeamMembersAdapter(private val avatars: List<Int>, private val context: Co
 
     // Gắn dữ liệu cho ViewHolder
     override fun onBindViewHolder(holder: TeamMemberViewHolder, position: Int) {
-        if (position == avatars.size) {
-            // Đây là nút "add member"
-            holder.imgAvatar.setImageResource(R.drawable.ic_sign_up)
-        } else {
             // Hiển thị avatar thành viên
-            holder.imgAvatar.setImageResource(avatars[position])
-        }
+            holder.apply {
+                imgAvatar.setImageResource(avatars[position])
+            }
     }
 
     // Trả về số lượng mục (bao gồm thêm mục cho nút "Thêm thành viên")

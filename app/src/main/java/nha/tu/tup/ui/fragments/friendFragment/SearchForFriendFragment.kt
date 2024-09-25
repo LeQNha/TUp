@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import nha.tu.tup.R
 import nha.tu.tup.databinding.FragmentHomeBinding
 import nha.tu.tup.databinding.FragmentSearchForFriendBinding
-import nha.tu.tup.ui.adapters.SearchFriendAdapter
+import nha.tu.tup.adapters.SearchFriendAdapter
 
 class SearchForFriendFragment : Fragment() {
 

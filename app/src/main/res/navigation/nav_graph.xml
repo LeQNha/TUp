@@ -19,7 +19,7 @@
         android:id="@+id/historyFragment2"
         android:name="nha.tu.tup.ui.fragments.ProfileFragment"
         android:label="fragment_history"
-        tools:layout="@layout/fragment_history" />
+        tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/settingFragment2"
         android:name="nha.tu.tup.ui.fragments.SettingFragment"

@@ -9,8 +9,8 @@ import nha.tu.tup.databinding.ActivityTeamScreenBinding
 import nha.tu.tup.models.Task
 import nha.tu.tup.ui.acitvities.task.CreateNewTask
 import nha.tu.tup.ui.acitvities.task.LeaderTaskScreen
-import nha.tu.tup.ui.adapters.TeamMembersAdapter
-import nha.tu.tup.ui.adapters.TeamTasksAdapter
+import nha.tu.tup.adapters.TeamMembersAdapter
+import nha.tu.tup.adapters.TeamTasksAdapter
 import nha.tu.tup.ui.fragments.dialogFragments.AddNewMemberDialogFragment
 import nha.tu.tup.ui.fragments.dialogFragments.SeeAllMembersDialogFragment
 import nha.tu.tup.ui.fragments.dialogFragments.SeeAllTasksDialogFragment

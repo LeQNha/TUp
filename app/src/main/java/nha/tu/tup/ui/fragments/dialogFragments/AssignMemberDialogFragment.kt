@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import nha.tu.tup.R
 import nha.tu.tup.databinding.FragmentAddNewMemberDialogBinding
 import nha.tu.tup.databinding.FragmentAssignMemberDialogBinding
-import nha.tu.tup.ui.adapters.MemberAddAdapter
-import nha.tu.tup.ui.adapters.MemberAssignAdapter
+import nha.tu.tup.adapters.MemberAddAdapter
+import nha.tu.tup.adapters.MemberAssignAdapter
 
 class AssignMemberDialogFragment : DialogFragment() {
 

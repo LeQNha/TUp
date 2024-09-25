@@ -6,8 +6,8 @@ import androidx.fragment.app.Fragment
 import nha.tu.tup.R
 import nha.tu.tup.databinding.ActivityMainBinding
 import nha.tu.tup.ui.fragments.FriendFragment
-import nha.tu.tup.ui.fragments.ProfileFragment
 import nha.tu.tup.ui.fragments.HomeFragment
+import nha.tu.tup.ui.fragments.ProfileFragment
 import nha.tu.tup.ui.fragments.SettingFragment
 
 class MainActivity : AppCompatActivity() {

@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import nha.tu.tup.R
 import nha.tu.tup.databinding.FragmentFriendListBinding
-import nha.tu.tup.ui.adapters.FriendListAdapter
-import nha.tu.tup.ui.adapters.SeeAllMemberAdapter2
+import nha.tu.tup.adapters.FriendListAdapter
+import nha.tu.tup.adapters.SeeAllMemberAdapter2
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

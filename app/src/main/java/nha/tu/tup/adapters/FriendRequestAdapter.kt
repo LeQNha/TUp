@@ -1,4 +1,4 @@
-package nha.tu.tup.ui.adapters
+package nha.tu.tup.adapters
 
 import android.util.Log
 import android.view.LayoutInflater

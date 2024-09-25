@@ -8,7 +8,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import nha.tu.tup.R
 import nha.tu.tup.databinding.FragmentSeeAllMembersDialogBinding
-import nha.tu.tup.ui.adapters.SeeAllMemberAdapter2
+import nha.tu.tup.adapters.SeeAllMemberAdapter2
 
 class SeeAllMembersDialogFragment : DialogFragment() {
 

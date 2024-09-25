@@ -1,4 +1,4 @@
-package nha.tu.tup.ui.adapters
+package nha.tu.tup.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -12,11 +12,11 @@ class TeamAdapter(private val teamList: List<Team>): RecyclerView.Adapter<TeamAd
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): TeamAdapter.TeamItemHolder {
+    ): TeamItemHolder {
         return TeamItemHolder(LayoutInflater.from(parent.context).inflate(R.layout.team_rv_item_layout,parent,false))
     }
 
-    override fun onBindViewHolder(holder: TeamAdapter.TeamItemHolder, position: Int) {
+    override fun onBindViewHolder(holder: TeamItemHolder, position: Int) {
         val currentTeam = teamList[position]
         holder.apply {
             projectName.text = currentTeam.projectName

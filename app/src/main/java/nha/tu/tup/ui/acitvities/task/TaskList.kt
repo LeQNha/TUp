@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import nha.tu.tup.R
 import nha.tu.tup.databinding.ActivityTaskListBinding
 import nha.tu.tup.models.Task
-import nha.tu.tup.ui.adapters.TeamTasksAdapter
+import nha.tu.tup.adapters.TeamTasksAdapter
 
 class TaskList : AppCompatActivity() {
 

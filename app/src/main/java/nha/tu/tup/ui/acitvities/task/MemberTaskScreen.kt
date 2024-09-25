@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import nha.tu.tup.R
 import nha.tu.tup.databinding.ActivityMemberTaskScreenBinding
-import nha.tu.tup.ui.adapters.TeamMembersAdapter
+import nha.tu.tup.adapters.TeamMembersAdapter
 import nha.tu.tup.ui.fragments.dialogFragments.SeeAllAssignedMembersDialogFragment
 
 class MemberTaskScreen : AppCompatActivity() {

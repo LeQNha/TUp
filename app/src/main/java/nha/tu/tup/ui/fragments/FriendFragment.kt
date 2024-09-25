@@ -11,7 +11,7 @@ import androidx.core.graphics.drawable.DrawableCompat
 import com.google.android.material.tabs.TabLayoutMediator
 import nha.tu.tup.R
 import nha.tu.tup.databinding.FragmentFriendBinding
-import nha.tu.tup.ui.adapters.FriendViewPagerAdapter
+import nha.tu.tup.adapters.FriendViewPagerAdapter
 
 class FriendFragment : Fragment() {
 
