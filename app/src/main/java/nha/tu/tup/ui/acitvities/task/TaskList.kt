@@ -22,25 +22,25 @@ class TaskList : AppCompatActivity() {
     }
 
     private fun taskListRvSetUp(){
-        val taskList = listOf<Task>(
-            Task("Learn material", "22h", 3),
-            Task("Assemble the part", "3d", 2),
-            Task("Write the code", "1w", 4),
-            Task("Buy hat", "4h", 1),
-            Task("Write report", "1m", 2),
-            Task("Set up", "1w", 4)
-        )
-
-        teamTasksAdapter = TeamTasksAdapter(taskList)
-        val taskListLayoutManager = LinearLayoutManager(this)
-        binding.taskListRv.apply {
-            layoutManager = taskListLayoutManager
-            adapter = teamTasksAdapter
-        }
-
-        teamTasksAdapter.setOnItemClickListener {
-            val intent = Intent(this, LeaderTaskScreen::class.java)
-            startActivity(intent)
-        }
+//        val taskList = listOf<Task>(
+//            Task("Learn material", "22h", "23"),
+//            Task("Assemble the part", "3d", 2),
+//            Task("Write the code", "1w", 4),
+//            Task("Buy hat", "4h", 1),
+//            Task("Write report", "1m", 2),
+//            Task("Set up", "1w", 4)
+//        )
+//
+//        teamTasksAdapter = TeamTasksAdapter(taskList)
+//        val taskListLayoutManager = LinearLayoutManager(this)
+//        binding.taskListRv.apply {
+//            layoutManager = taskListLayoutManager
+//            adapter = teamTasksAdapter
+//        }
+//
+//        teamTasksAdapter.setOnItemClickListener {
+//            val intent = Intent(this, LeaderTaskScreen::class.java)
+//            startActivity(intent)
+//        }
     }
 }

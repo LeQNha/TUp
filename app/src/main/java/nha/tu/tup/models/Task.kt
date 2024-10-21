@@ -1,8 +1,12 @@
 package nha.tu.tup.models
 
+import com.google.firebase.Timestamp
+
 data class Task (
-    val taskTitle: String,
-    val taskDue: String,
-    val memberNumber: Int,
-    val teamName: String = "Prime Tea"
+    var taskId: String? = null,
+    val taskTitle: String = "",
+    val taskDescription: String = "",
+    val taskCreatedDate: Timestamp? = null,
+    val taskDue: Timestamp? = null,
+    val teamId: String = ""
 )

@@ -1,6 +1,15 @@
 package nha.tu.tup.models
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+import com.google.firebase.Timestamp
+import com.google.firebase.firestore.FieldValue
+import java.time.LocalDate
+
+@Parcelize
 data class Team (
-    val projectName: String,
-    val createdDate: String
-)
+    var teamId : String = "",
+    val teamName: String = "",
+    val createdDate: Timestamp? = null,
+    var leaderId: String? = null
+) : Parcelable

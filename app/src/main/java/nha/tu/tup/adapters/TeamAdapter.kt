@@ -4,11 +4,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import nha.tu.tup.R
 import nha.tu.tup.models.Team
+import java.text.SimpleDateFormat
+import java.util.Locale
 
-class TeamAdapter(private val teamList: List<Team>): RecyclerView.Adapter<TeamAdapter.TeamItemHolder>() {
+class TeamAdapter(): RecyclerView.Adapter<TeamAdapter.TeamItemHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -16,11 +20,27 @@ class TeamAdapter(private val teamList: List<Team>): RecyclerView.Adapter<TeamAd
         return TeamItemHolder(LayoutInflater.from(parent.context).inflate(R.layout.team_rv_item_layout,parent,false))
     }
 
+    private var differCallback = object: DiffUtil.ItemCallback<Team>(){
+        override fun areItemsTheSame(oldItem: Team, newItem: Team): Boolean {
+            return oldItem.teamId == newItem.teamId
+        }
+
+        override fun areContentsTheSame(oldItem: Team, newItem: Team): Boolean {
+            return oldItem == newItem
+        }
+    }
+
+    val differ = AsyncListDiffer(this, differCallback)
+
     override fun onBindViewHolder(holder: TeamItemHolder, position: Int) {
-        val currentTeam = teamList[position]
+        val currentTeam = differ.currentList[position]
         holder.apply {
-            projectName.text = currentTeam.projectName
-            createdDate.text = currentTeam.createdDate
+            projectName.text = currentTeam.teamName
+
+            val sdf = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+            createdDate.text = currentTeam.createdDate?.let {
+                sdf.format(it.toDate())
+            }
         }
         holder.itemView.setOnClickListener{
             onItemClickListener?.let {
@@ -30,7 +50,7 @@ class TeamAdapter(private val teamList: List<Team>): RecyclerView.Adapter<TeamAd
     }
 
     override fun getItemCount(): Int {
-        return teamList.size
+        return differ.currentList.size
     }
 
     inner class TeamItemHolder(itemView:View): RecyclerView.ViewHolder(itemView){

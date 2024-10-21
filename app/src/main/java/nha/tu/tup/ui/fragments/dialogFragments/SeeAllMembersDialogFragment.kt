@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import nha.tu.tup.R
 import nha.tu.tup.databinding.FragmentSeeAllMembersDialogBinding
@@ -79,5 +80,7 @@ class SeeAllMembersDialogFragment : DialogFragment() {
             adapter = memberAdapter2
             layoutManager = memberRvLayoutManager
         }
+        val dividerItemDecoration = DividerItemDecoration(binding.seeAllMembersRv.context, DividerItemDecoration.VERTICAL)
+        binding.seeAllMembersRv.addItemDecoration(dividerItemDecoration)
     }
 }

@@ -1,24 +1,33 @@
 package nha.tu.tup.ui.acitvities.task
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.Timestamp
 import nha.tu.tup.R
 import nha.tu.tup.databinding.ActivityCreateNewTaskBinding
 import nha.tu.tup.adapters.AssignedMembersAdapter
 import nha.tu.tup.adapters.TeamMembersAdapter
+import nha.tu.tup.models.Task
+import nha.tu.tup.models.Team
+import nha.tu.tup.ui.acitvities.BaseActivity
 import nha.tu.tup.ui.fragments.dialogFragments.AssignMemberDialogFragment
 import nha.tu.tup.ui.fragments.dialogFragments.SeeAllAssignedMembersDialogFragment
+import java.util.Date
 
-class CreateNewTask : AppCompatActivity() {
+class CreateNewTask : BaseActivity() {
 
     private lateinit var binding : ActivityCreateNewTaskBinding
     private lateinit var teamMembersAdapter: TeamMembersAdapter
+
+    private lateinit var team: Team
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCreateNewTaskBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        getTeam()
         assignedMemberRvSetUp()
         onClickListenerSetUp()
     }
@@ -29,6 +38,25 @@ class CreateNewTask : AppCompatActivity() {
         }
         binding.openAssignMemberDialogFragmentBtn.setOnClickListener {
             openAssignMemberDialogFragment()
+        }
+        binding.saveBtn.setOnClickListener {
+            val taskTitle = binding.taskTitleEditTxt.text.toString()
+            val taskDescription = binding.taskDescriptionEditTxt.text.toString()
+            val task = Task(taskTitle = taskTitle, taskDescription = taskDescription, taskCreatedDate = Timestamp(Date()), teamId = team.teamId)
+
+            taskViewModel.addNewTask(task)
+
+            binding.taskTitleEditTxt.text.clear()
+            binding.taskDescriptionEditTxt.text.clear()
+
+            onBackPressed()
+        }
+    }
+
+    private fun getTeam(){
+        val parcelTeam = intent.getParcelableExtra<Team>("team")
+        parcelTeam?.let {
+            team = it
         }
     }
 

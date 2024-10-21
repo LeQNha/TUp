@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "576686728928",
+    "project_id": "tupapp-af849",
+    "storage_bucket": "tupapp-af849.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:576686728928:android:d1c3962ee5da98711a9285",
+        "android_client_info": {
+          "package_name": "nha.tu.tup"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiHHqglstvkpViU-iKDSMEu7YiRcAHcuw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

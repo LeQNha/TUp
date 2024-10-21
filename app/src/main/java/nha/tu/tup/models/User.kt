@@ -1,6 +1,8 @@
 package nha.tu.tup.models
 
 data class User(
-    val avatar: String,
-    val username: String
+    val userId: String? = null,
+    var avatar: String? = null,
+    var username: String? = null,
+    var email: String? = null,
 )

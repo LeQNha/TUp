@@ -10,12 +10,12 @@ import nha.tu.tup.ui.fragments.HomeFragment
 import nha.tu.tup.ui.fragments.ProfileFragment
 import nha.tu.tup.ui.fragments.SettingFragment
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
-//    private lateinit var bottomNavigationView: BottomNavigationView
+    //    private lateinit var bottomNavigationView: BottomNavigationView
 //    private lateinit var appBarConfiguration: AppBarConfiguration
 //    private lateinit var navController: NavController
-    lateinit var binding : ActivityMainBinding
+    lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -31,31 +31,36 @@ class MainActivity : AppCompatActivity() {
         bottomNavItemClickSetUp()
     }
 
-    fun bottomNavItemClickSetUp(){
+    fun bottomNavItemClickSetUp() {
         binding.bottomNavigationView.setOnItemSelectedListener {
-            when(it.itemId){
+            when (it.itemId) {
                 R.id.home_nav -> {
                     replaceFragment(HomeFragment())
                     true
                 }
+
                 R.id.chat_nav -> {
                     replaceFragment(FriendFragment())
                     true
                 }
+
                 R.id.history_nav -> {
                     replaceFragment(ProfileFragment())
                     true
                 }
+
                 R.id.setting_nav -> {
                     replaceFragment(SettingFragment())
                     true
                 }
+
                 else -> false
             }
         }
     }
 
-    private fun replaceFragment(fragment: Fragment){
-        supportFragmentManager.beginTransaction().replace(R.id.fragmentContainerView, fragment).commit()
+    private fun replaceFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction().replace(R.id.fragmentContainerView, fragment)
+            .commit()
     }
 }
