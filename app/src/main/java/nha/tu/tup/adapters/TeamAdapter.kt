@@ -41,6 +41,7 @@ class TeamAdapter(): RecyclerView.Adapter<TeamAdapter.TeamItemHolder>() {
             createdDate.text = currentTeam.createdDate?.let {
                 sdf.format(it.toDate())
             }
+
         }
         holder.itemView.setOnClickListener{
             onItemClickListener?.let {
@@ -63,4 +64,7 @@ class TeamAdapter(): RecyclerView.Adapter<TeamAdapter.TeamItemHolder>() {
     fun setOnItemClickListener(listener: (Team) -> Unit){
         onItemClickListener = listener
     }
+
+
+
 }

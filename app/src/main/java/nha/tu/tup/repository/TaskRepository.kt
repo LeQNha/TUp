@@ -1,19 +1,18 @@
 package nha.tu.tup.repository
 
-import android.app.DownloadManager.Query
 import android.util.Log
 import nha.tu.tup.firebase.FirebaseInstance
 import nha.tu.tup.models.Task
-import nha.tu.tup.models.Team
 
 class TaskRepository {
     val taskCollectionRef = FirebaseInstance.firebaseFirestoreInstance.collection("tasks")
 
-    suspend fun addNewTask(task: Task) {
-        val taskIdFirestore = taskCollectionRef.document().id
-        task.taskId = taskIdFirestore
+    fun addNewTask(task: Task) {
+        val taskId = taskCollectionRef.document().id
+        task.taskId = taskId
         taskCollectionRef
-            .add(task)
+            .document(taskId)
+            .set(task)
             .addOnSuccessListener {
                 Log.d("Firestore", "Add Successfully")
             }

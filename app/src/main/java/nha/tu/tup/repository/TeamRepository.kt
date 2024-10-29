@@ -1,10 +1,7 @@
 package nha.tu.tup.repository
 
 import android.util.Log
-import androidx.lifecycle.MutableLiveData
-import com.google.firebase.Timestamp
 import com.google.firebase.firestore.Query
-import kotlinx.coroutines.tasks.await
 import nha.tu.tup.firebase.FirebaseInstance
 import nha.tu.tup.models.Member
 import nha.tu.tup.models.Team
@@ -15,28 +12,31 @@ class TeamRepository {
     val userCollectionRef = FirebaseInstance.firebaseFirestoreInstance.collection("users")
     val memberCollectionRef = FirebaseInstance.firebaseFirestoreInstance.collection("members")
     val auth = FirebaseInstance.auth
-    val currentUser = auth.currentUser
+    val currentUserAuth = auth.currentUser
 
 //    val _users : MutableLiveData
 
-    suspend fun addNewTeam(team: Team) {
-        val teamIdFirestore = teamCollectionRef.document().id
-        team.teamId = teamIdFirestore
+    fun addNewTeam(team: Team) {
+        val teamId = teamCollectionRef.document().id
+        team.teamId = teamId
 
-        val currentUserId = currentUser?.uid
+        val currentUserId = currentUserAuth?.uid
         team.leaderId = currentUserId
         
         teamCollectionRef
-            .add(team)
+            .document(teamId)
+            .set(team)
             .addOnSuccessListener {
                 Log.d("Firestore", "Add Successfully")
+                val member = Member(teamId = teamId, userId = currentUserId)
+                addMember(member)
             }
     }
 
     fun getTeams(listener: (List<Team>) -> Unit) {
         teamCollectionRef
             .orderBy("createdDate", Query.Direction.DESCENDING)
-            .whereEqualTo("leaderId", currentUser?.uid)
+            .whereEqualTo("leaderId", currentUserAuth?.uid)
             .addSnapshotListener{ snapshot, exeption ->
             if(exeption != null){
                 Log.w("Firestore", "Listen failed", exeption)
@@ -51,7 +51,7 @@ class TeamRepository {
         }
     }
 
-    suspend fun getTeamById(teamId: String): Team? {
+    fun getTeamById(teamId: String): Team? {
         var team: Team? = null
         teamCollectionRef
             .document(teamId)
@@ -67,7 +67,7 @@ class TeamRepository {
         return team
     }
 
-    suspend fun getTeamByName(teamName: String): List<Team> {
+    fun getTeamByName(teamName: String): List<Team> {
         val teams: List<Team> = listOf()
         teamCollectionRef
             .whereEqualTo("teamName", teamName)
@@ -85,18 +85,19 @@ class TeamRepository {
         return teams
     }
 
-    suspend fun addMember(member: Member){
+    fun addMember(member: Member){
         val memberId = memberCollectionRef.document().id
         member.memberId = memberId
 
         memberCollectionRef
-            .add(member)
+            .document(memberId)
+            .set(member)
             .addOnSuccessListener {
                 Log.d("Firestore", "Add Successfully")
             }
     }
 
-    suspend fun getMembers(teamId: String, listener: (List<User>) -> Unit){
+    fun getMembers(teamId: String, listener: (List<User>) -> Unit){
         memberCollectionRef
             .whereEqualTo("teamId", teamId)
             .addSnapshotListener { querySnapshot, exception ->

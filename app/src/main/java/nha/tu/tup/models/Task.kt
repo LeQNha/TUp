@@ -3,7 +3,7 @@ package nha.tu.tup.models
 import com.google.firebase.Timestamp
 
 data class Task (
-    var taskId: String? = null,
+    var taskId: String = "",
     val taskTitle: String = "",
     val taskDescription: String = "",
     val taskCreatedDate: Timestamp? = null,

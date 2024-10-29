@@ -14,6 +14,7 @@
         android:layout_height="48dp"
         android:layout_gravity="center"
         android:src="@drawable/default_profile_picture"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,9 +24,10 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/profile_image"
         app:layout_constraintEnd_toStartOf="@+id/linearLayout14"
         app:layout_constraintStart_toEndOf="@+id/profile_image"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="@+id/profile_image">
 
         <TextView
             android:id="@+id/user_name"
@@ -57,27 +59,26 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/confirm_btn"
-            android:layout_width="65dp"
+        <ImageView
+            android:id="@+id/accept_btn"
+            android:layout_width="50dp"
             android:layout_height="32dp"
             android:layout_margin="3dp"
-            android:background="@color/primary_blue"
-            android:text="Confirm"
+            android:src="@drawable/ic_tick"
             android:textSize="13sp"
+            app:tint="#8BC34A"
             android:textAllCaps="false"
             android:textColor="@color/white" />
 
-        <Button
-            android:id="@+id/delete_btn"
-            android:layout_width="65dp"
+        <ImageView
+            android:id="@+id/refuse_btn"
+            android:layout_width="50dp"
             android:layout_height="32dp"
+            android:padding="3dp"
+            app:tint="#EC7651"
             android:layout_margin="3dp"
-            android:background="#E6E4E4"
-            android:text="Delete"
-            android:textSize="13sp"
-            android:textAllCaps="false"
-            android:textColor="@color/black" />
+            android:src="@drawable/ic_close"
+            android:textSize="13sp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

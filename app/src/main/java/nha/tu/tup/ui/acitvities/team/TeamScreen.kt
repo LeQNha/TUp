@@ -13,13 +13,14 @@ import nha.tu.tup.adapters.TeamMembersAdapter
 import nha.tu.tup.adapters.TeamTasksAdapter
 import nha.tu.tup.models.Team
 import nha.tu.tup.ui.acitvities.BaseActivity
+import nha.tu.tup.ui.acitvities.MainActivity
 import nha.tu.tup.ui.fragments.dialogFragments.AddNewMemberDialogFragment
 import nha.tu.tup.ui.fragments.dialogFragments.SeeAllMembersDialogFragment
 import nha.tu.tup.ui.fragments.dialogFragments.SeeAllTasksDialogFragment
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-class TeamScreen : BaseActivity() {
+class TeamScreen : MainActivity() {
 
     private lateinit var binding: ActivityTeamScreenBinding
     lateinit var teamMembersAdapter: TeamMembersAdapter

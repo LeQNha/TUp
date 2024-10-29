@@ -9,7 +9,7 @@ import java.time.LocalDate
 @Parcelize
 data class Team (
     var teamId : String = "",
-    val teamName: String = "",
+    var teamName: String = "",
     val createdDate: Timestamp? = null,
     var leaderId: String? = null
 ) : Parcelable

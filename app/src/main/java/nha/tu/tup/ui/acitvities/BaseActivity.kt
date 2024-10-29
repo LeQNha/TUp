@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import nha.tu.tup.R
+import nha.tu.tup.firebase.FirebaseInstance
+import nha.tu.tup.models.User
 import nha.tu.tup.repository.TaskRepository
 import nha.tu.tup.repository.TeamRepository
 import nha.tu.tup.repository.UserRepository
@@ -16,6 +18,7 @@ open class BaseActivity : AppCompatActivity() {
     lateinit var teamViewModel: TeamViewModel
     lateinit var taskViewModel: TaskViewModel
     lateinit var userViewModel: UserViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_base)

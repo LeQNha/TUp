@@ -16,18 +16,19 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/friend_request_number_txt_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="4 "
             android:textColor="#EF7A72"
-            android:textSize="24sp"
+            android:textSize="23sp"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Friend requests"
-            android:textSize="24sp"
+            android:textSize="23sp"
             android:textStyle="bold" />
 
     </LinearLayout>

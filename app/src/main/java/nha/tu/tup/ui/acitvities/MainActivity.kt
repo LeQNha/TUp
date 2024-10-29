@@ -1,6 +1,5 @@
 package nha.tu.tup.ui.acitvities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import nha.tu.tup.R
@@ -10,16 +9,16 @@ import nha.tu.tup.ui.fragments.HomeFragment
 import nha.tu.tup.ui.fragments.ProfileFragment
 import nha.tu.tup.ui.fragments.SettingFragment
 
-class MainActivity : BaseActivity() {
+open class MainActivity : BaseActivity() {
 
     //    private lateinit var bottomNavigationView: BottomNavigationView
 //    private lateinit var appBarConfiguration: AppBarConfiguration
 //    private lateinit var navController: NavController
-    lateinit var binding: ActivityMainBinding
+    lateinit var mainBinding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        mainBinding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(mainBinding.root)
 
 //        bottomNavigationView = findViewById(R.id.bottom_navigation_view)
 //        navController = findNavController(R.id.fragmentContainerView)
@@ -28,11 +27,14 @@ class MainActivity : BaseActivity() {
 //
 //        bottomNavigationView.setupWithNavController(navController)
 
+        //Gọi các hàm để nhận dữ liệu cho các biến livedata
+        userViewModel.getUser()
+        userViewModel.getFriendRequests()
         bottomNavItemClickSetUp()
     }
 
     fun bottomNavItemClickSetUp() {
-        binding.bottomNavigationView.setOnItemSelectedListener {
+        mainBinding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.home_nav -> {
                     replaceFragment(HomeFragment())

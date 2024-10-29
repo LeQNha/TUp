@@ -9,20 +9,21 @@ import nha.tu.tup.models.Task
 import nha.tu.tup.repository.TaskRepository
 import nha.tu.tup.repository.TeamRepository
 
-class TaskViewModel(val taskRepository: TaskRepository): ViewModel() {
-    var _tasks : MutableLiveData<List<Task>> = MutableLiveData()
+class TaskViewModel(val taskRepository: TaskRepository) : ViewModel() {
+    var _tasks: MutableLiveData<List<Task>> = MutableLiveData()
 
-    fun addNewTask(task: Task) = viewModelScope.launch {
+    fun addNewTask(task: Task) =
         taskRepository.addNewTask(task)
-    }
 
-    fun getTasks(teamId: String){
-        taskRepository.getTasks(teamId){
+
+    fun getTasks(teamId: String) {
+        taskRepository.getTasks(teamId) {
             _tasks.postValue(it)
         }
     }
 
-    class TaskViewModelFactory (private val taskRepository: TaskRepository) : ViewModelProvider.Factory{
+    class TaskViewModelFactory(private val taskRepository: TaskRepository) :
+        ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             return TaskViewModel(taskRepository) as T
         }

@@ -17,9 +17,10 @@ import nha.tu.tup.adapters.TeamAdapter
 import nha.tu.tup.firebase.FirebaseInstance
 import nha.tu.tup.repository.TeamRepository
 import nha.tu.tup.ui.acitvities.BaseActivity
+import nha.tu.tup.ui.acitvities.MainActivity
 import nha.tu.tup.viewmodels.TeamViewModel
 
-class TeamList : BaseActivity() {
+class TeamList : MainActivity() {
 
     private lateinit var binding: ActivityTeamListBinding
     lateinit var teamAdapter: TeamAdapter
@@ -28,10 +29,6 @@ class TeamList : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityTeamListBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-//        val teamRepository = TeamRepository()
-//        val teamViewModelProviderFactory = TeamViewModel.TeamViewModelFactory(teamRepository)
-//        teamViewModel = ViewModelProvider(this, teamViewModelProviderFactory).get(TeamViewModel::class.java)
 
         teamRvSetUp()
         onClickListenerSetUp()
