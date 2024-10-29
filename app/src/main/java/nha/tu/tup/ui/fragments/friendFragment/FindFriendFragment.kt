@@ -9,17 +9,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-
+import nha.tu.tup.R
+import nha.tu.tup.databinding.FragmentHomeBinding
 import nha.tu.tup.adapters.SearchFriendAdapter
 import nha.tu.tup.databinding.FragmentFindFriendBinding
 import nha.tu.tup.models.User
-import nha.tu.tup.ui.acitvities.BaseActivity
 import nha.tu.tup.ui.acitvities.MainActivity
 import nha.tu.tup.viewmodels.UserViewModel
 
 class FindFriendFragment : Fragment() {
 
-    private var _binding: FragmentFindFriendBinding? = null
+    private var _binding : FragmentFindFriendBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var userViewModel: UserViewModel
@@ -30,7 +30,7 @@ class FindFriendFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val userViewModel = (activity as MainActivity).userViewModel
+        userViewModel = (activity as MainActivity).userViewModel
         currentUser = userViewModel.currentUser
     }
 
@@ -51,10 +51,6 @@ class FindFriendFragment : Fragment() {
         findFriend()
     }
 
-    private fun onClickListenerSetUp() {
-
-    }
-
     private fun findFriend() {
         binding.searchFriendEditTxt.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -62,10 +58,10 @@ class FindFriendFragment : Fragment() {
             }
 
             override fun onTextChanged(query: CharSequence?, p1: Int, p2: Int, p3: Int) {
-//                userViewModel.findUsers(query.toString())
-//                userViewModel._foundUsers.observe(viewLifecycleOwner, Observer {
-//                    searchFriendAdapter.differ.submitList(it)
-//                })
+                userViewModel.findUsers(query.toString())
+                userViewModel._foundUsers.observe(viewLifecycleOwner, Observer {
+                    searchFriendAdapter.differ.submitList(it)
+                })
             }
 
             override fun afterTextChanged(p0: Editable?) {
@@ -74,16 +70,20 @@ class FindFriendFragment : Fragment() {
         })
     }
 
-    private fun searchFriendRvSetUp() {
-        val users = listOf<User>()
+
+    private fun searchFriendRvSetUp(){
+        val users = listOf(
+            "Jackie Mamiya",
+            "Megan Hasselblad",
+            "Christopher Taylor",
+            "Dold Nalo"
+        )
 
         val searchFriendLayoutManager = LinearLayoutManager(requireContext())
-        searchFriendAdapter.differ.submitList(users)
         binding.searchFriendRv.apply {
             layoutManager = searchFriendLayoutManager
             adapter = searchFriendAdapter
         }
-        onItemComponentsClickSetUp()
     }
 
     private fun onItemComponentsClickSetUp() {

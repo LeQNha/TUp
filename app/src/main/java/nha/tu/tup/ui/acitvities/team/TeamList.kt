@@ -1,26 +1,13 @@
 package nha.tu.tup.ui.acitvities.team
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.firebase.Firebase
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.firestore
-import com.google.firebase.firestore.toObject
 import nha.tu.tup.databinding.ActivityTeamListBinding
-import nha.tu.tup.models.Team
 import nha.tu.tup.adapters.TeamAdapter
-import nha.tu.tup.firebase.FirebaseInstance
-import nha.tu.tup.repository.TeamRepository
-import nha.tu.tup.ui.acitvities.BaseActivity
 import nha.tu.tup.ui.acitvities.MainActivity
-import nha.tu.tup.viewmodels.TeamViewModel
 
-class TeamList : MainActivity() {
+open class TeamList : MainActivity() {
 
     private lateinit var binding: ActivityTeamListBinding
     lateinit var teamAdapter: TeamAdapter

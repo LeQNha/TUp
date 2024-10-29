@@ -27,9 +27,7 @@ open class MainActivity : BaseActivity() {
 //
 //        bottomNavigationView.setupWithNavController(navController)
 
-        //Gọi các hàm để nhận dữ liệu cho các biến livedata
         userViewModel.getUser()
-        userViewModel.getFriendRequests()
         bottomNavItemClickSetUp()
     }
 

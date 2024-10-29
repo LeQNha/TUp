@@ -11,7 +11,6 @@ import nha.tu.tup.R
 import nha.tu.tup.databinding.FragmentFriendRequestsBinding
 import nha.tu.tup.adapters.FriendRequestAdapter
 import nha.tu.tup.models.User
-import nha.tu.tup.ui.acitvities.BaseActivity
 import nha.tu.tup.ui.acitvities.MainActivity
 import nha.tu.tup.viewmodels.UserViewModel
 
@@ -44,7 +43,7 @@ class FriendRequestsFragment : Fragment() {
     }
 
     private fun friendRequestsRvSetUp(){
-
+        userViewModel.getFriendRequests()
         val friendRequestAdapter = FriendRequestAdapter()
         userViewModel._friendRequestSenders.observe(viewLifecycleOwner, Observer {
             friendRequestAdapter.differ.submitList(it)
@@ -61,4 +60,19 @@ class FriendRequestsFragment : Fragment() {
             friendRequestAdapter.differ.submitList(it)
         })
     }
+
+//    private fun friendRequestsRvSetUp(){
+//        val friendRequests = listOf(
+//            "ABC",
+//            "Uruno A",
+//            "PinKof",
+//            "Tynn Iper"
+//        )
+//
+//        val friendRequestAdapter = FriendRequestAdapter()
+//        binding.friendRequestRv.apply {
+//            layoutManager = LinearLayoutManager(requireContext())
+//            adapter = friendRequestAdapter
+//        }
+//    }
 }
