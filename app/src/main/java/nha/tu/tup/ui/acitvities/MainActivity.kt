@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import nha.tu.tup.R
 import nha.tu.tup.databinding.ActivityMainBinding
+import nha.tu.tup.models.User
 import nha.tu.tup.ui.fragments.FriendFragment
 import nha.tu.tup.ui.fragments.HomeFragment
 import nha.tu.tup.ui.fragments.ProfileFragment
@@ -15,6 +16,7 @@ open class MainActivity : BaseActivity() {
 //    private lateinit var appBarConfiguration: AppBarConfiguration
 //    private lateinit var navController: NavController
     lateinit var mainBinding: ActivityMainBinding
+    var currentUser: User? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mainBinding = ActivityMainBinding.inflate(layoutInflater)
@@ -27,8 +29,20 @@ open class MainActivity : BaseActivity() {
 //
 //        bottomNavigationView.setupWithNavController(navController)
 
-        userViewModel.getUser()
+        userViewModel.getTest()
+        getCurrentUser()
         bottomNavItemClickSetUp()
+    }
+
+    private fun getCurrentUser(){
+       val parcelUser = intent.getParcelableExtra<User>("currentUser")
+        parcelUser.let {
+            currentUser = it
+            println("___NHAN DC PARCEL = ${currentUser?.username}")
+
+            //KHOI TAO để đảm bảo HomeFragment nhận được currentUser
+            replaceFragment(HomeFragment())
+        }
     }
 
     fun bottomNavItemClickSetUp() {

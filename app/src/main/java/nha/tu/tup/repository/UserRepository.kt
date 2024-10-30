@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.Toast
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.Query
+import com.google.firebase.firestore.toObject
 import kotlinx.coroutines.tasks.await
 import nha.tu.tup.AutthenciateScreen
 import nha.tu.tup.firebase.FirebaseInstance
@@ -51,54 +52,89 @@ class UserRepository() {
             }
     }
 
-    fun loginUser(email: String, password: String, context: Context, activity: AutthenciateScreen) {
-        auth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    // Đăng nhập thành công
-                    currentUserAuth = auth.currentUser
-                    Toast.makeText(
-                        context,
-                        "Login Successfully: ${currentUserAuth?.email}",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    Log.i("Firebase", "Login Successfully: ${currentUserAuth?.email}")
-                    context.startActivity(Intent(context, MainActivity::class.java))
-                } else {
-                    // Đăng nhập thất bại
-                    Toast.makeText(
-                        context,
-                        "Login Failed: ${task.exception?.message}",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-            }
+    //    fun loginUser(email: String, password: String, context: Context, activity: AutthenciateScreen) {
+//        auth.signInWithEmailAndPassword(email, password)
+//            .addOnCompleteListener { task ->
+//                if (task.isSuccessful) {
+//                    // Đăng nhập thành công
+//                    currentUserAuth = auth.currentUser
+//                    Toast.makeText(
+//                        context,
+//                        "Login Successfully: ${currentUserAuth?.email}",
+//                        Toast.LENGTH_SHORT
+//                    ).show()
+//                    Log.i("Firebase", "Login Successfully: ${currentUserAuth?.email}")
+//                    context.startActivity(Intent(context, MainActivity::class.java))
+//                } else {
+//                    // Đăng nhập thất bại
+//                    Toast.makeText(
+//                        context,
+//                        "Login Failed: ${task.exception?.message}",
+//                        Toast.LENGTH_SHORT
+//                    ).show()
+//                }
+//            }
+//    }
+    suspend fun loginUser(email: String, password: String, context: Context) {
+        try {
+            val result = auth.signInWithEmailAndPassword(email, password).await()
+            // Đăng nhập thành công
+            currentUserAuth = result.user
+            println("___DANG NHAP THANH CONG")
+            Toast.makeText(
+                context,
+                "Login Successfully: ${currentUserAuth?.email}",
+                Toast.LENGTH_SHORT
+            ).show()
+            Log.i("Firebase", "Login Successfully: ${currentUserAuth?.email}")
+        } catch (e: Exception) {
+            // Đăng nhập thất bại
+            Toast.makeText(
+                context,
+                "Login Failed: ${e.message}",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 
-    fun getUser(callback: (User?) -> Unit) {
+//    fun getUser(callback: (User?) -> Unit) {
+//        val currentUserId = currentUserAuth?.uid
+//        if (currentUserId != null) {
+//            userCollectionRef
+//                .whereEqualTo("userId", currentUserId)
+//                .get()
+//                .addOnSuccessListener { querySnapshot ->
+//
+//                    if (!querySnapshot.isEmpty) {
+//                        // Lấy tài liệu đầu tiên
+//                        val document = querySnapshot.documents[0]
+//                        val user = document.toObject(User::class.java)
+//                        println("DA GET DC USER")
+//                        callback(user) // user có thể là null
+//                    } else {
+//                        callback(null) // Trả về null nếu không có tài liệu nào
+//                    }
+//
+//                }
+//                .addOnFailureListener {
+//                    callback(null) // Trả về null nếu xảy ra lỗi
+//                }
+//        } else {
+//            callback(null) // Trả về null nếu người dùng chưa đăng nhập
+//        }
+//    }
+
+    suspend fun getUser(context: Context, callback: (User?) -> Unit) {
+        var user: User? = null
         val currentUserId = currentUserAuth?.uid
         if (currentUserId != null) {
-            userCollectionRef
-                .whereEqualTo("userId", currentUserId)
-                .get()
-                .addOnSuccessListener { querySnapshot ->
-
-                    if (!querySnapshot.isEmpty) {
-                        // Lấy tài liệu đầu tiên
-                        val document = querySnapshot.documents[0]
-                        val user = document.toObject(User::class.java)
-                        callback(user) // user có thể là null
-                    } else {
-                        callback(null) // Trả về null nếu không có tài liệu nào
-                    }
-
-                }
-                .addOnFailureListener {
-                    callback(null) // Trả về null nếu xảy ra lỗi
-                }
-        } else {
-            callback(null) // Trả về null nếu người dùng chưa đăng nhập
+            val document = userCollectionRef.document(currentUserId).get().await()
+            user = document.toObject<User>(User::class.java)
+            println("___da nhan dc user = ${user?.username}")
         }
+        callback(user)
+
+//        context.startActivity(Intent(context, MainActivity::class.java))
     }
 
     fun signOutUser(context: Context, activity: MainActivity) {
@@ -135,6 +171,34 @@ class UserRepository() {
             }
     }
 
+    //    fun getFriendRequests(listener: (List<User>) -> Unit) {
+//        friendRequestCollectionRef
+//            .whereEqualTo("requestReceiverId", currentUserAuth?.uid)
+//            .orderBy("requestDate", Query.Direction.DESCENDING)
+//            .addSnapshotListener { snapshot, exception ->
+//                if (exception != null) {
+//                    Log.w("Firestore", "Listen failed", exception)
+//                    return@addSnapshotListener
+//                }
+//                if (snapshot != null && !snapshot.isEmpty) {
+//                    println("DA NHAN DC FRIEND REQUEST")
+//                    val requestSenderIds = snapshot.documents.mapNotNull {
+//                        it.getString("requestSenderId")
+//                    }
+//                    userCollectionRef
+//                        .whereIn("userId", requestSenderIds)
+//                        .get()
+//                        .addOnSuccessListener {
+//                            val requestSenders = it.toObjects<User>(User::class.java)
+//                            println("FRIEND REQUEST USERS")
+//                            listener(requestSenders)
+//                        }
+//                        .addOnFailureListener { e ->
+//                            Log.e("FirestoreError", "Error fetching user details: ${e.message}")
+//                        }
+//                }
+//            }
+//    }
     fun getFriendRequests(listener: (List<User>) -> Unit) {
         friendRequestCollectionRef
             .whereEqualTo("requestReceiverId", currentUserAuth?.uid)
@@ -162,6 +226,7 @@ class UserRepository() {
                         }
                 }
             }
+        println("EII YOPOOOO")
     }
 
     suspend fun findUsers(userNameQuery: String): List<User> {
@@ -170,7 +235,7 @@ class UserRepository() {
             val querySnapshot = userCollectionRef.get().await()
 
             for (document in querySnapshot) {
-
+                println()
                 val name = document.getString("username")
                 if (name != null && name != "" && name.lowercase()
                         .contains(userNameQuery.lowercase())

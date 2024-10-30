@@ -6,11 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import nha.tu.tup.R
 import nha.tu.tup.databinding.FragmentFriendRequestsBinding
 import nha.tu.tup.adapters.FriendRequestAdapter
 import nha.tu.tup.models.User
+import nha.tu.tup.repository.UserRepository
 import nha.tu.tup.ui.acitvities.MainActivity
 import nha.tu.tup.viewmodels.UserViewModel
 
@@ -20,10 +22,12 @@ class FriendRequestsFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var userViewModel: UserViewModel
+    private var currentUser: User? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         userViewModel = (activity as MainActivity).userViewModel
+        currentUser = (activity as MainActivity).currentUser
     }
 
     override fun onCreateView(
@@ -39,27 +43,28 @@ class FriendRequestsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        friendRequestsRvSetUp()
+//        friendRequestsRvSetUp()
     }
 
-    private fun friendRequestsRvSetUp(){
-        userViewModel.getFriendRequests()
-        val friendRequestAdapter = FriendRequestAdapter()
-        userViewModel._friendRequestSenders.observe(viewLifecycleOwner, Observer {
-            friendRequestAdapter.differ.submitList(it)
-            binding.friendRequestNumberTxtView.text = it.size.toString()
-        })
-        binding.friendRequestRv.apply {
-            layoutManager = LinearLayoutManager(requireContext())
-            adapter = friendRequestAdapter
-        }
-
-        val friendRequestSenders = mutableListOf<User>()
-
-        userViewModel._friendRequestSenders.observe(viewLifecycleOwner, Observer {
-            friendRequestAdapter.differ.submitList(it)
-        })
-    }
+//    private fun friendRequestsRvSetUp(){
+//        userViewModel = (activity as MainActivity).userViewModel
+//        userViewModel.getFriendRequests()
+//        val friendRequestAdapter = FriendRequestAdapter()
+//        userViewModel._friendRequestSenders.observe(viewLifecycleOwner, Observer {
+//            friendRequestAdapter.differ.submitList(it)
+//            binding.friendRequestNumberTxtView.text = it.size.toString()
+//        })
+//        binding.friendRequestRv.apply {
+//            layoutManager = LinearLayoutManager(requireContext())
+//            adapter = friendRequestAdapter
+//        }
+//
+//        val friendRequestSenders = mutableListOf<User>()
+//
+//        userViewModel._friendRequestSenders.observe(viewLifecycleOwner, Observer {
+//            friendRequestAdapter.differ.submitList(it)
+//        })
+//    }
 
 //    private fun friendRequestsRvSetUp(){
 //        val friendRequests = listOf(

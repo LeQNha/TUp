@@ -49,7 +49,6 @@ class LoginFragment : Fragment() {
                     binding.emailEditText.text.toString(),
                     binding.passwordEditText.text.toString(),
                     requireContext(),
-                    requireActivity() as AutthenciateScreen
                 )
             } else {
                 Toast.makeText(requireContext(), "Empty field!!!", Toast.LENGTH_SHORT).show()

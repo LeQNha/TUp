@@ -1,10 +1,12 @@
 package nha.tu.tup.viewmodels
 
 import android.content.Context
+import android.content.Intent
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import nha.tu.tup.AutthenciateScreen
 import nha.tu.tup.models.User
@@ -15,6 +17,9 @@ class UserViewModel(val userRepository: UserRepository) : ViewModel() {
     var _users: MutableLiveData<List<User>> = MutableLiveData()
     var _friendRequestSenders: MutableLiveData<List<User>> = MutableLiveData()
     var _foundUsers: MutableLiveData<List<User>> = MutableLiveData()
+    var test: String? = null
+
+    //    var _currentUser: MutableLiveData<User> = MutableLiveData()
     var currentUser: User? = null
     fun register(
         username: String,
@@ -26,16 +31,33 @@ class UserViewModel(val userRepository: UserRepository) : ViewModel() {
         userRepository.registerUser(username, email, password, context, activity)
 
 
-    fun login(email: String, password: String, context: Context, activity: AutthenciateScreen){
-        userRepository.loginUser(email, password, context, activity)
+    fun login(email: String, password: String, context: Context) = viewModelScope.launch {
+        userRepository.loginUser(email, password, context)
+        getUser(context)
+        getTest()
     }
 
     fun signOut(context: Context, activity: MainActivity) =
         userRepository.signOutUser(context, activity)
 
-    fun getUser() = userRepository.getUser {
-        currentUser = it
-        println("_USER getUser = ${currentUser?.username}")
+//    fun getUser() = userRepository.getUser {
+//        currentUser = it
+//        println("_USER getUser = ${currentUser?.username}")
+//    }
+
+    fun getUser(context: Context) = viewModelScope.launch {
+        userRepository.getUser(context = context) {
+            currentUser = it
+            println("___CO KO V = ${currentUser?.username}")
+        }
+        val intent = Intent(context, MainActivity::class.java).apply {
+            putExtra("currentUser", currentUser)
+        }
+        context.startActivity(intent)
+    }
+
+    fun getTest(){
+        test = "NHA LOL"
     }
 
     fun sendFriendRequest(requestReceiverId: String, context: Context) =
@@ -44,10 +66,15 @@ class UserViewModel(val userRepository: UserRepository) : ViewModel() {
             context = context
         )
 
-    fun getFriendRequests(){
-        userRepository.getFriendRequests {
+    //    fun getFriendRequests(){
+//        userRepository.getFriendRequests {
+//            _friendRequestSenders.postValue(it)
+//        }
+//    }
+    fun getFriendRequests() {
+        println("OHHH MANNN")
+        userRepository.getFriendRequests() {
             _friendRequestSenders.postValue(it)
-            println("thiet lap _friendRequestSenders")
         }
     }
 
