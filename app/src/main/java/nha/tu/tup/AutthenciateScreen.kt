@@ -10,13 +10,22 @@ import nha.tu.tup.repository.UserRepository
 import nha.tu.tup.ui.acitvities.BaseActivity
 import nha.tu.tup.viewmodels.UserViewModel
 
-class AutthenciateScreen : BaseActivity() {
+class AutthenciateScreen : AppCompatActivity() {
 
     private lateinit var binding: ActivityAtuhenciateBinding
+    lateinit var userViewModel: UserViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAtuhenciateBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        userViewModelSetUp()
+    }
+
+    fun userViewModelSetUp(){
+        val userRepository = UserRepository()
+        val userViewModelProviderFactory = UserViewModel.UserViewModelFactory(userRepository)
+        userViewModel = ViewModelProvider(this , userViewModelProviderFactory).get(UserViewModel::class.java)
     }
 
 }

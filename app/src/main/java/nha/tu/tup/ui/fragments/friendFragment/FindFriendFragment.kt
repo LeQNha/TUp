@@ -31,7 +31,7 @@ class FindFriendFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         userViewModel = (activity as MainActivity).userViewModel
-        currentUser = userViewModel.currentUser
+        currentUser = (activity as MainActivity).currentUser
     }
 
     override fun onCreateView(
@@ -84,12 +84,14 @@ class FindFriendFragment : Fragment() {
             layoutManager = searchFriendLayoutManager
             adapter = searchFriendAdapter
         }
+
+        onItemComponentsClickSetUp()
     }
 
     private fun onItemComponentsClickSetUp() {
         searchFriendAdapter.setOnAddFriendBtnClickListener {
             val requestReceiverId = it.userId
-
+            println("___AN NUT ADD")
             userViewModel.sendFriendRequest(requestReceiverId, requireContext())
         }
     }

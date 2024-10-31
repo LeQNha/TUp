@@ -71,7 +71,7 @@
             android:textColor="@color/white" />
 
         <ImageView
-            android:id="@+id/refuse_btn"
+            android:id="@+id/decline_btn"
             android:layout_width="50dp"
             android:layout_height="32dp"
             android:padding="3dp"

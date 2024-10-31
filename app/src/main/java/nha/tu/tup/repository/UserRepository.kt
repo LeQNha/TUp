@@ -164,9 +164,11 @@ class UserRepository() {
         friendRequestCollectionRef
             .add(friendRequest)
             .addOnSuccessListener {
+                println("___SEND REQUEST")
                 Toast.makeText(context, "Request sent", Toast.LENGTH_SHORT)
             }
             .addOnFailureListener {
+                println("___FAIL SEND REQUEST")
                 Toast.makeText(context, "Can not send friend request", Toast.LENGTH_SHORT)
             }
     }
@@ -226,7 +228,6 @@ class UserRepository() {
                         }
                 }
             }
-        println("EII YOPOOOO")
     }
 
     suspend fun findUsers(userNameQuery: String): List<User> {

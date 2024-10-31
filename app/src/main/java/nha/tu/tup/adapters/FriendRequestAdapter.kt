@@ -20,7 +20,7 @@ class FriendRequestAdapter () : RecyclerView.Adapter<FriendRequestAdapter.Friend
         val mutualFriendsAndTime: TextView = itemView.findViewById(R.id.mutual_friends_and_time)
         val profileImage: ImageView = itemView.findViewById(R.id.profile_image)
         val confirmButton: ImageView = itemView.findViewById(R.id.accept_btn)
-        val deleteButton: ImageView = itemView.findViewById(R.id.delete_btn)
+        val deleteButton: ImageView = itemView.findViewById(R.id.decline_btn)
     }
 
     val differCallback = object : DiffUtil.ItemCallback<User>(){

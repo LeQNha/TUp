@@ -28,8 +28,6 @@ open class MainActivity : BaseActivity() {
 //        setupActionBarWithNavController(navController,appBarConfiguration)
 //
 //        bottomNavigationView.setupWithNavController(navController)
-
-        userViewModel.getTest()
         getCurrentUser()
         bottomNavItemClickSetUp()
     }

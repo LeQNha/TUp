@@ -31,10 +31,9 @@ class UserViewModel(val userRepository: UserRepository) : ViewModel() {
         userRepository.registerUser(username, email, password, context, activity)
 
 
-    fun login(email: String, password: String, context: Context) = viewModelScope.launch {
+    fun login(email: String, password: String, context: Context, activity: AutthenciateScreen) = viewModelScope.launch {
         userRepository.loginUser(email, password, context)
-        getUser(context)
-        getTest()
+        getUser(context, activity)
     }
 
     fun signOut(context: Context, activity: MainActivity) =
@@ -45,7 +44,7 @@ class UserViewModel(val userRepository: UserRepository) : ViewModel() {
 //        println("_USER getUser = ${currentUser?.username}")
 //    }
 
-    fun getUser(context: Context) = viewModelScope.launch {
+    fun getUser(context: Context, activity: AutthenciateScreen) = viewModelScope.launch {
         userRepository.getUser(context = context) {
             currentUser = it
             println("___CO KO V = ${currentUser?.username}")
@@ -54,10 +53,8 @@ class UserViewModel(val userRepository: UserRepository) : ViewModel() {
             putExtra("currentUser", currentUser)
         }
         context.startActivity(intent)
-    }
 
-    fun getTest(){
-        test = "NHA LOL"
+        activity.finish()
     }
 
     fun sendFriendRequest(requestReceiverId: String, context: Context) =

@@ -45,11 +45,15 @@ class LoginFragment : Fragment() {
 //        }
         binding.authLoginButton.setOnClickListener {
             if (!binding.emailEditText.text.isEmpty() && !binding.passwordEditText.text.isEmpty()) {
-                userViewModel.login(
-                    binding.emailEditText.text.toString(),
-                    binding.passwordEditText.text.toString(),
-                    requireContext(),
-                )
+                val authenticateActivity = activity as? AutthenciateScreen
+                if (authenticateActivity != null) {
+                    userViewModel.login(
+                        binding.emailEditText.text.toString(),
+                        binding.passwordEditText.text.toString(),
+                        requireContext(),
+                        authenticateActivity
+                    )
+                }
             } else {
                 Toast.makeText(requireContext(), "Empty field!!!", Toast.LENGTH_SHORT).show()
             }
